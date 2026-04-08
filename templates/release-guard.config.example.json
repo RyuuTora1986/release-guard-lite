@@ -1,0 +1,42 @@
+{
+  "baseBranch": "main",
+  "commands": [
+    {
+      "name": "TypeCheck",
+      "command": "npx tsc --noEmit"
+    },
+    {
+      "name": "Lint",
+      "command": "npx eslint src/"
+    },
+    {
+      "name": "Test",
+      "command": "npm test"
+    }
+  ],
+  "checklist": [
+    "数据库 migration 已 review",
+    "环境变量变更已通知运维",
+    "CHANGELOG 已更新"
+  ],
+  "discordWebhook": "",
+  "riskRules": {
+    "highRiskFiles": [
+      "**/*.env*",
+      "**/migration*/**",
+      "**/auth/**",
+      "**/payment/**",
+      "**/deploy/**",
+      "package.json",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "yarn.lock"
+    ],
+    "mediumRiskFiles": [
+      "**/config/**",
+      "**/*.config.*",
+      "Dockerfile",
+      "docker-compose*.yml"
+    ]
+  }
+}

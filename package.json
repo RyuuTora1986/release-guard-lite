@@ -1,0 +1,35 @@
+{
+  "name": "release-guard-lite",
+  "version": "0.1.0",
+  "description": "A pre-release risk checker for small teams. Reads git diff, runs checks, classifies risk, generates Markdown reports, and pushes to Discord.",
+  "type": "module",
+  "bin": {
+    "release-guard": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "test": "node --import tsx --test src/__tests__/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "release",
+    "guard",
+    "risk",
+    "check",
+    "cli"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "execa": "^9.5.0",
+    "simple-git": "^3.27.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
