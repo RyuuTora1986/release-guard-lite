@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ryuutora1986.github.io/release-guard-lite/sitemap.xml
