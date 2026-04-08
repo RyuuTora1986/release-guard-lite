@@ -1,15 +1,27 @@
 # Release Guard Lite
 
-A pre-release risk checker for small teams and solo developers.
+[![npm version](https://img.shields.io/npm/v/release-guard-lite)](https://www.npmjs.com/package/release-guard-lite)
+[![license](https://img.shields.io/npm/l/release-guard-lite)](./LICENSE)
+[![node](https://img.shields.io/node/v/release-guard-lite)](https://nodejs.org/)
 
-Reads your git diff, runs configured checks, classifies risk, generates a Markdown report, and pushes a summary to Discord.
+**One command to know if your release is safe to ship.**
+
+A zero-config CLI that reads your git diff, runs checks, classifies risk (low / medium / high), generates a Markdown report, and pushes a summary to Discord — in under 10 seconds.
+
+```bash
+npx release-guard-lite run
+```
+
+> Perfect for solo devs, small teams, and anyone using AI coding tools who wants a safety net before merging.
+
+---
 
 ## Why
 
-- Catch risky changes before they ship
-- Get a clear, shareable risk summary for every release
-- Make AI-generated code changes more controllable
-- Stop relying on memory for pre-release checklists
+- **Catch risky changes before they ship** — auto-detect high-risk files like migrations, auth, payments
+- **One-command risk summary** — no setup fatigue, no dashboards, just a clear report
+- **AI coding safety net** — when Copilot/Cursor/Claude writes code, this tool checks before you merge
+- **CI-friendly** — exits with code 1 on medium/high risk, plug it into any pipeline
 
 ## Install
 
