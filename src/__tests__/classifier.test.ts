@@ -147,4 +147,36 @@ describe("classifyRisk", () => {
     assert.equal(result.level, "medium");
     assert.ok(result.reasons.some((r) => r.includes("package.json")));
   });
+
+  // Windows path compatibility
+  it("Windows backslash paths match high-risk patterns", () => {
+    const result = classifyRisk(
+      makeInput({
+        changedFiles: ["src\\auth\\login.ts"],
+        checkResults: [{ name: "Test", passed: true }],
+      })
+    );
+    assert.equal(result.level, "medium");
+    assert.ok(result.reasons.some((r) => r.includes("auth")));
+  });
+
+  it("Windows backslash paths match medium-risk patterns", () => {
+    const result = classifyRisk(
+      makeInput({
+        changedFiles: ["src\\config\\database.ts"],
+        checkResults: [{ name: "Test", passed: true }],
+      })
+    );
+    assert.equal(result.level, "medium");
+  });
+
+  it("Windows backslash env file matches high-risk", () => {
+    const result = classifyRisk(
+      makeInput({
+        changedFiles: ["deploy\\.env.production"],
+        checkResults: [{ name: "Test", passed: false }],
+      })
+    );
+    assert.equal(result.level, "high");
+  });
 });

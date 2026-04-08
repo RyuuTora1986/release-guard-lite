@@ -20,6 +20,18 @@
     "cli"
   ],
   "license": "MIT",
+  "author": "RyuuTora1986",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RyuuTora1986/release-guard-lite.git"
+  },
+  "homepage": "https://github.com/RyuuTora1986/release-guard-lite",
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=20"
   },

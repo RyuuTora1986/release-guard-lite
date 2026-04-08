@@ -2,9 +2,12 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { z } from "zod";
 
+const DEFAULT_TIMEOUT_MS = 300_000; // 5 minutes
+
 const CommandSchema = z.object({
   name: z.string().min(1, "command name cannot be empty"),
   command: z.string().min(1, "command string cannot be empty"),
+  timeoutMs: z.number().positive().optional(),
 });
 
 const RiskRulesSchema = z.object({
@@ -17,6 +20,7 @@ const ConfigSchema = z.object({
   commands: z.array(CommandSchema).default([]),
   checklist: z.array(z.string()).default([]),
   discordWebhook: z.string().default(""),
+  timeoutMs: z.number().positive().default(DEFAULT_TIMEOUT_MS),
   riskRules: RiskRulesSchema.default({
     highRiskFiles: [],
     mediumRiskFiles: [],
