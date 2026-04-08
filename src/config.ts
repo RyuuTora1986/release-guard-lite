@@ -65,3 +65,4 @@ export function loadConfig(cwd?: string): ReleaseGuardConfig {
 
   return result.data;
 }
+// CI validation test
