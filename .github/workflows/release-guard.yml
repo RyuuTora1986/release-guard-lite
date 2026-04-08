@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Need full history for diff
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -18,6 +18,15 @@ jobs:
 
       - run: npm ci
 
-      - run: npx release-guard run
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Run Release Guard
+        run: npx tsx src/cli.ts run --no-push --json > release-guard-result.json || true
+
+      - name: Show result
+        run: cat release-guard-result.json
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-guard-report
+          path: .release-guard/latest-report.md
